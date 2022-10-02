@@ -1,6 +1,8 @@
+#Importing modules needed in program
 import art
 from replit import clear
 
+# Introduction of program
 print(art.logo)
 print("Hello General! The camp has been inflitrated.")
 print("Use this cipher to communicate with our allies.")
@@ -15,14 +17,15 @@ while restart_program:
     list_of_decision = ["encrypt", "decrypt"]
     e = "encryption"
     while condition:
+        #Informs the user if input is invalid
         decision = input("\nWould you like to 'encrypt' or 'decrypt'?\n")   
         if decision in list_of_decision:
             text = input("\nType your message:\n").lower()
             shift = int(input("\nType the shift number:\n"))
             condition = False
         else:
-            print("Wrong input. Try again!")
-            
+            print("Invalid input. Try again!")
+        #Defining the function    
         def caesar(text, shift, decision):
             clear()
             final_text = " "
@@ -36,6 +39,7 @@ while restart_program:
                     new_position = current_postion + shift    
                     final_text += alphabet[new_position]
             print(f"The {decision}ed text is:{final_text}\n")
+            # Informs the user whether encrypted word is weak or strong.
             if decision == "encrypt":
                 if len(final_text) <= 6:
                     print(f"Weak {decision}ion. Message maybe easily intercepted.\n")
@@ -43,7 +47,8 @@ while restart_program:
                     print(f"Strong {decision}ion. Message will be hard to intercept.\n")
             
     caesar(text, shift, decision)
-    
+
+    #Prompts the user if the program should run again.
     if input("Would you like to restart cipher? 'Yes' or 'No' \n").lower() == "yes":
         restart_program = True
     else:
